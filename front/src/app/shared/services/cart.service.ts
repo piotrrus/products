@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '../../shared/services/local-storage.service';
+// import { StorageService } from '../../shared/services/local-storage.service';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { ProductModel } from '../../shared/models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-
-  private _cart = new BehaviorSubject<any>(undefined);
+  public cart: ProductModel[] = [];
 
   constructor(
-    private storageService: StorageService
   ) { }
 
-  public getCart(): Observable<any> {
-    return this._cart.asObservable();
+  public addToCart(productData: ProductModel) {
+    const newProduct = new ProductModel();
+    newProduct.id = productData.id;
+    newProduct.id_genre = productData.id_genre;
+    newProduct.name = productData.name;
+    newProduct.price = productData.price;
+    this.cart.push(newProduct);
+    console.log(this.cart);
   }
 
-  public addToCart(data) {
-    this.storageService.setLocalStorage('new position', data);
-  }
-
-  public clearCart(data) {
+  public clearAll() {
+    this.cart = [];
   }
 
 }

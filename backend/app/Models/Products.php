@@ -70,7 +70,7 @@ class Products extends Model implements CrudInterface
     public static function softDelete(int $id)
     {
         $products             = Products::find($id);
-        $products->deleted_at = Carbon::toDateString();
+        $products->deleted_at = Carbon::now()->toDateString();
         $products->save();
     }
 }

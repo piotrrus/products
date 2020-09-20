@@ -71,10 +71,7 @@ class ProductsController extends BaseController
 
     public function delete(int $id)
     {
-        $validated = $request->validated();
-        if ($validated) {
-            $response = Products::delete($id);
+            $response = Products::softDelete($id);
             return $this->message($response);
-        }
     }
 }

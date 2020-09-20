@@ -1,1 +1,39 @@
-<p>cart-page works!</p>
+<div class="row filter-dropdowns-group ">
+    <div class="col-10 ">
+        <h3>Cart list : {{ dataLength }} </h3>
+    </div>
+
+    <div class="col-2 ">
+        <ng-container *ngIf="dataLength>0">
+            <div class="button-row ">
+                <div fxFlex="100 " fxLayoutGap="10px ">
+                    <a class="add-link" href="javascript:void(0)" (click)="clearCart( )">Empty cart </a>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr *ngFor="let product of tableData ">
+            <td>
+                <a routerLink="/product/ {{ product.id }} " class="table-link " title="show details ">
+                   {{product.name}}
+                </a>
+            </td>
+            <td>
+                {{ product.price }} €
+            </td>
+
+            <td>
+                {{ product.genre }}
+            </td>
+            <!-- <td>
+                <a href="javascript:void(0)" (click)="delete(product.id)" title="delete">
+                  delete
+                </a>
+            </td> -->
+        </tr>
+    </tbody>
+</table>

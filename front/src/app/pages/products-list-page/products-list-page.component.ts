@@ -3,6 +3,10 @@ import { tap } from 'rxjs/operators';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { ProductService } from '../../shared/services/product.service';
+import { CartService } from '../../shared/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { dbOptions } from '../../shared/enums/db-options.enum';
+import { ProductModel } from '../../shared/models/product.model';
 
 @Component({
   selector: 'app-products-list-page',
@@ -18,7 +22,9 @@ export class ProductsListPageComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -66,8 +72,9 @@ export class ProductsListPageComponent implements OnInit {
       });
   }
 
-  public addToCart(id: number) {
-    console.log(id);
+  public addToCart(productData: ProductModel) {
+    this.cartService.addToCart(productData);
+    this.toastr.info('New product has been added to cart.');
   }
 
   public delete(id: number) {
@@ -75,18 +82,22 @@ export class ProductsListPageComponent implements OnInit {
       .pipe(
         tap(
           data => {
-            // this.checkIfSuccess(data, dbOptions.UPDATE);
+            console.log('deleted', data);
+            this.checkIfSuccess(data, dbOptions.DELETE);
+            this.getProductsList();
           })
       )
       .subscribe();
   }
 
   checkIfSuccess(data, mode) {
-    // if (mode === dbOptions.ADD) {
-    //   console.log('added', mode);
-    // } else if (mode === dbOptions.UPDATE) {
-    //   console.log('updated', mode);
-    // }
+    if (mode === dbOptions.ADD) {
+      this.toastr.info('New product has been added.');
+    } else if (mode === dbOptions.UPDATE) {
+      this.toastr.info('The product data has been modified.');
+    } else if (mode === dbOptions.DELETE) {
+      this.toastr.info('The product data has been deleted.');
+    }
   }
 
 }

@@ -24,7 +24,7 @@ Route::get('books', 'Api\BooksController@index');
 Route::get('products', 'Api\ProductsController@index');
 
 Route::get('products/show/{id}', 'Api\ProductsController@show');
-Route::post('products/delete/{id}', 'Api\ProductsController@delete');
+Route::get('products/delete/{id}', 'Api\ProductsController@delete');
 Route::post('products/update/{id}', 'Api\ProductsController@update');
 Route::post('products/create', 'Api\ProductsController@create');
 
