@@ -1,0 +1,14 @@
+    body {
+        font-size: 14px;
+        font-weight: 300;
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.55;
+        text-rendering: optimizeLegibility;
+        -webkit-backface-visibility: hidden;
+        overflow-x: hidden;
+        color: #ebebeb;
+        background-color: #2b3e50;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }

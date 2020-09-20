@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+    <div [ngSwitch]="formName">
+        <ng-container *ngSwitchCase="'products'" ?>
+            <app-product-form [formData]="formData"></app-product-form>
+        </ng-container>
+        <!--<ng-container *ngSwitchCase="'genre'" ?>
+            <app-product-genre-form [formData]="formData"></app-product-genre-form>
+        </ng-container> -->
+    </div>
+</div>

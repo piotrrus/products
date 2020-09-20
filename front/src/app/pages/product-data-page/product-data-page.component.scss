@@ -1,0 +1,14 @@
+.book-card {
+    min-height: 800px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    &-description {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    &-statistic {
+        font-family: Verdana;
+        color: cadetblue;
+    }
+}

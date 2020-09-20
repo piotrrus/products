@@ -1,0 +1,49 @@
+<div class="row filter-dropdowns-group ">
+    <div class="col-6 ">
+        <h3>Product list : {{ dataLength }} </h3>
+    </div>
+    <div class="col-4 ">
+        <input type="text" class="filter-input" placeholder="Filter data..." (keyup)="updateFilter($event)" />
+    </div>
+    <div class="col-2 ">
+        <div class="button-row ">
+            <div fxFlex="100 " fxLayoutGap="10px ">
+                <a class="add-link" href="javascript:void(0)" (click)="openModal( )">Add  product</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr *ngFor="let product of tableData ">
+            <td>
+                <a routerLink="/product/ {{ product.id }} " class="table-link " title="show details ">
+                   {{product.name}}
+                </a>
+            </td>
+            <td>
+                {{ product.price }} €
+            </td>
+
+            <td>
+                {{ product.genre }}
+            </td>
+            <td>
+                <a href="javascript:void(0)" (click)="openModal(product)" title="edit">
+                  edit
+                </a>
+            </td>
+            <td>
+                <a href="javascript:void(0)" (click)="addToCart(product.id)" title="buy">
+                  buy
+                </a>
+            </td>
+            <td>
+                <a href="javascript:void(0)" (click)="delete(product.id)" title="delete">
+                  delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,55 @@
+<div fxFlex="60%" fxFlexOffset="10%" [formGroup]="productForm.form">
+    <div fxLayout="row">
+        <div fxFlex="100%">
+            <mat-form-field class="full-width">
+                <input matInput formControlName="name" placeholder="* Product" trim appUpperFirst/>
+                <mat-error *ngIf="productForm.name.hasError('required')">
+                    {{ getErrorMessage('required') }}
+                </mat-error>
+                <mat-error *ngIf="productForm.name.touched && productForm.name.hasError('maxlength')">
+                    {{ getErrorMessage('maxlength') }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row">
+        <div fxFlex="100%">
+            <mat-form-field class="full-width" z-index=9999>
+                <mat-select formControlName="id_genre" placeholder="Choose category">
+                    <mat-option *ngFor="let genre of genresList" [value]="genre.id">
+                        {{ genre.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="productForm.id_genre.hasError('required')">
+                    {{ getErrorMessage('required') }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row">
+        <div fxFlex="100%">
+            <mat-form-field class="full-width">
+                <input matInput formControlName="price" placeholder="* Price" trim appUpperFirst/>
+                <mat-error *ngIf="productForm.price.hasError('required')">
+                    {{ getErrorMessage('required') }}
+                </mat-error>
+                <!-- <mat-error *ngIf="authorForm.name.touched && authorForm.name.hasError('textValidator')">
+                    {{ getErrorMessage('lettersOnly') }}
+                </mat-error> -->
+                <mat-error *ngIf="productForm.price.touched && productForm.price.hasError('maxlength')">
+                    {{ getErrorMessage('maxlength') }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="form-btn">
+        <div fxFlex="100%">
+            <button mat-raised-button class="right" [disabled]="!productForm.form.valid" (click)="writeData()" color="primary">
+                        Zapisz
+            </button>
+        </div>
+    </div>
+</div>
