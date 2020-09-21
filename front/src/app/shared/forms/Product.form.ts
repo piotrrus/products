@@ -17,7 +17,7 @@ export class ProductForm extends Base {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(100), textValidator]],
       id_genre: ['', [Validators.required]],
-      price: ['', [Validators.required]]
+      price: ['', [Validators.required, Validators.pattern('^[\-]?[0-9]+[\.]?[0-9]{0,2}$')]]
     });
 
     return this._form;

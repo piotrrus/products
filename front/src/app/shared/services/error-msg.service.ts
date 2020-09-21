@@ -12,13 +12,14 @@ export class ErrorMsgService {
   getValidatorErrorMessage(validatorName: string, value?: any): string {
 
     const messages = {
-      'required': 'To pole jest wymagane.',
-      'maxlength': 'Przekroczono dopuszczalną ilość znaków.',
-      'lettersOnly': 'Dupuszcalne tylko litery, kropki i myślnik.',
+      'required': 'This field is required.',
+      'maxlength': 'Number of signs are limited',
+      'lettersOnly': 'Letters only allowed.',
       'notNull': 'Wpisana wartość musi być większa od zera.',
-      'pattern': 'Niewłaściwy format danych.',
+      'pattern': 'Incorrect data format.',
       'email': 'Wprowadź poprawny adres e-mail.',
-      'dateFormat': 'Niepoprawny format daty',
+      'dateFormat': 'Niepoprawny date format',
+      'currencyFormat': 'Incorrect currency format.',
     };
 
     return messages[validatorName];

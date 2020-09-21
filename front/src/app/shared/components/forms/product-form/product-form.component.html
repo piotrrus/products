@@ -9,6 +9,9 @@
                 <mat-error *ngIf="productForm.name.touched && productForm.name.hasError('maxlength')">
                     {{ getErrorMessage('maxlength') }}
                 </mat-error>
+                <mat-error *ngIf="productForm.name.touched && productForm.name.hasError('textValidator')">
+                    {{ getErrorMessage('lettersOnly') }}
+                </mat-error>
             </mat-form-field>
         </div>
     </div>
@@ -35,11 +38,11 @@
                 <mat-error *ngIf="productForm.price.hasError('required')">
                     {{ getErrorMessage('required') }}
                 </mat-error>
-                <!-- <mat-error *ngIf="authorForm.name.touched && authorForm.name.hasError('textValidator')">
-                    {{ getErrorMessage('lettersOnly') }}
-                </mat-error> -->
                 <mat-error *ngIf="productForm.price.touched && productForm.price.hasError('maxlength')">
                     {{ getErrorMessage('maxlength') }}
+                </mat-error>
+                <mat-error *ngIf="productForm.price.touched && productForm.price.hasError('pattern')">
+                    {{ getErrorMessage('currencyFormat') }}
                 </mat-error>
             </mat-form-field>
         </div>
