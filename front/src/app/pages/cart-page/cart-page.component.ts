@@ -13,6 +13,7 @@ export class CartPageComponent implements OnInit {
 
   public dataLength = 1;
   public tableData: any = [];
+  public totalPrice;
 
   constructor(
     private cartService: CartService,
@@ -22,6 +23,7 @@ export class CartPageComponent implements OnInit {
   private getCartData() {
     this.tableData = this.cartService.cart;
     this.dataLength = this.tableData.length;
+    this.totalCartPrice();
   }
 
   ngOnInit() {
@@ -32,6 +34,15 @@ export class CartPageComponent implements OnInit {
     this.cartService.clearAll();
     this.getCartData();
     this.toastr.info('All Cart content has been removed');
+  }
+
+  public delete(id: number) {
+    this.cartService.delete(id);
+    this.getCartData();
+  }
+
+  private totalCartPrice() {
+    this.totalPrice = this.tableData.reduce((a, b) => a + Number(b.price), 0);
   }
 
 }

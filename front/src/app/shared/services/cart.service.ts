@@ -26,4 +26,8 @@ export class CartService {
     this.cart = [];
   }
 
+  public delete(id: number) {
+    this.cart = this.cart.filter(item => item.id !== id);
+  }
+
 }

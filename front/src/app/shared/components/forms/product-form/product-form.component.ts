@@ -13,7 +13,7 @@ import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent extends BaseComponent implements OnInit, OnChanges {
 
@@ -43,7 +43,6 @@ export class ProductFormComponent extends BaseComponent implements OnInit, OnCha
   ngOnChanges(changes: SimpleChanges): void {
     const formData = changes.formData;
     if (formData.currentValue) {
-      console.log(formData.currentValue);
       this.setValues(formData.currentValue);
     }
   }
@@ -67,15 +66,11 @@ export class ProductFormComponent extends BaseComponent implements OnInit, OnCha
 
   private getData() {
     this.getListData().subscribe(data => {
-      // console.log(data[1].data.attributes);
       this.genresList = data[1].data.attributes;
     });
   }
 
   private setValues(productData) {
-
-    console.log(productData);
-
     this.productForm.name.setValue(productData.name);
     this.productForm.id_genre.setValue(productData.id_genre);
     this.productForm.price.setValue(productData.price);
@@ -109,9 +104,9 @@ export class ProductFormComponent extends BaseComponent implements OnInit, OnCha
 
   checkIfSuccess(data, mode) {
     if (mode === dbOptions.ADD) {
-      console.log('added', mode);
+      this.toastr.info('New product has been added.');
     } else if (mode === dbOptions.UPDATE) {
-      console.log('updated', mode);
+      this.toastr.info('The product data has been modified.');
     }
   }
 }

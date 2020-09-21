@@ -19,10 +19,10 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () => import('../pages/cart-page/cart-page.module').then(m => m.CartPageModule),
   },
-  /*{
-    path: 'genres',
-    loadChildren: () => import('../pages/genres-page/genres-page.module').then(m => m.GenresPageModule),
-  },*/
+  {
+    path: 'categories',
+    loadChildren: () => import('../pages/categories-page/categories-page.module').then(m => m.CategoriesPageModule),
+  },
   // { path: '**', component: PageNotFoundComponent },
 ];
 

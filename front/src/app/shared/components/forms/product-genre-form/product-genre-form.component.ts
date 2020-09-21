@@ -13,7 +13,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-product-genre-form',
   templateUrl: './product-genre-form.component.html',
-  styleUrls: ['./product-genre-form.component.css']
+  styleUrls: ['./product-genre-form.component.scss']
 })
 export class ProductGenreFormComponent extends BaseComponent implements OnInit, OnChanges {
 
